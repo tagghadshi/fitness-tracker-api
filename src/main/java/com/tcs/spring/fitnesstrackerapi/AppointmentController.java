@@ -11,6 +11,8 @@ public class AppointmentController {
 
 	@Autowired
 	IAppointmentService appointmentService;
+	@Autowired
+	IAddressService addressService;
 	
 	@GetMapping("/appointments")
 	private Iterable<Appointment> getAllAppointment() {
@@ -19,19 +21,9 @@ public class AppointmentController {
 	
 	@PostMapping("/appointments")
 	private void saveAppointment(@RequestBody Appointment appointment) {
+		addressService.save(appointment.getAddress());
 		appointmentService.save(appointment);
 	}
 	
 }
-//{
-//    "name" : "Tejas Ghadshi",
-//    "age"  : 78,
-//    "email": "tejasghadshi@gmail.com" ,
-//    "phoneNo" : "9090906666",
-//    "address" : "Flat No 405,Sundar Appartment,Worli, Mumbai-400018",
-//    "trainerPreference" : "Male Trainer",
-//    "needOfPhysiotherapist" : false,
-//    "pack" : "One Time Visit",
-//    "weeks" :0,
-//    "ammount" :500
-//}
+

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Appointment {
@@ -14,12 +16,23 @@ public class Appointment {
 	private byte age;
 	private String email;
 	private String phoneNo;
-	private String address;
+	
+	@OneToOne
+	@JoinColumn(name = "ADDRESS_ID")
+	private Address address;
 	private String trainerPreference;
 	private boolean needOfPhysiotherapist;
 	private String pack;
 	private byte weeks;
 	private double ammount;
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public String getName() {
 		return name;
@@ -53,13 +66,13 @@ public class Appointment {
 		this.phoneNo = phoneNo;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
+//	public String getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(String address) {
+//		this.address = address;
+//	}
 
 	public String getTrainerPreference() {
 		return trainerPreference;
