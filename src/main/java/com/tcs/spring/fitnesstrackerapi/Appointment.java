@@ -1,5 +1,6 @@
 package com.tcs.spring.fitnesstrackerapi;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ public class Appointment {
 	private String email;
 	private String phoneNo;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ADDRESS_ID")
 	private Address address;
 	private String trainerPreference;
