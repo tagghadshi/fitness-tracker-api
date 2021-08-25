@@ -33,6 +33,8 @@ public class AppointmentController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AppointmentController.class);
 
+	private static final HttpStatus ResponseEntity = null;
+
 	@Autowired
 	IAppointmentService appointmentService;
 
@@ -47,9 +49,10 @@ public class AppointmentController {
 	}
 
 	@PostMapping
-	public void saveAppointment(@RequestBody Appointment appointment) {
+	public ResponseEntity<Appointment> saveAppointment(@RequestBody Appointment appointment) {
 		appointmentService.save(appointment);
 		logger.debug("Saved in Database");
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/{id}")
