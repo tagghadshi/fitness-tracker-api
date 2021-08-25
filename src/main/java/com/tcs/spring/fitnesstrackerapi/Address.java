@@ -18,7 +18,15 @@ public class Address {
 	private int pincode;
 	private String state;
 	private String country;
-	
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getAddressLine1() {
 		return addressLine1;
 	}

@@ -17,7 +17,7 @@ public class Appointment {
 	private byte age;
 	private String email;
 	private String phoneNo;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ADDRESS_ID")
 	private Address address;
@@ -26,6 +26,14 @@ public class Appointment {
 	private String pack;
 	private byte weeks;
 	private double ammount;
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public Address getAddress() {
 		return address;
