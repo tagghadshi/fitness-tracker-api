@@ -1,4 +1,4 @@
-package com.tcs.spring.fitnesstrackerapi;
+package com.tcs.spring.fitnesstrackerapi.exceptions;
 
 public class AppointmentNotFoundException extends RuntimeException {
 	public AppointmentNotFoundException(String message) {

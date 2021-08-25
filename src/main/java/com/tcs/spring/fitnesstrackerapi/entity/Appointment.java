@@ -1,4 +1,4 @@
-package com.tcs.spring.fitnesstrackerapi;
+package com.tcs.spring.fitnesstrackerapi.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
