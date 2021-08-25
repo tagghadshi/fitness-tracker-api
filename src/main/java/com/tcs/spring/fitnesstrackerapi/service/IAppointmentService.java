@@ -12,4 +12,6 @@ public interface IAppointmentService {
 	Optional<Appointment> retrieveAppointment(long id);
 
 	void deleteAppointment(long id);
+
+	void updateAppointment(long id, Appointment appointment);
 }

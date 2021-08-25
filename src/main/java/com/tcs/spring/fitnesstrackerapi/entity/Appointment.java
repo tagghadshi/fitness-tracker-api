@@ -91,7 +91,7 @@ public class Appointment {
 		this.trainerPreference = trainerPreference;
 	}
 
-	public boolean isNeedOfPhysiotherapist() {
+	public boolean getNeedOfPhysiotherapist() {
 		return needOfPhysiotherapist;
 	}
 
