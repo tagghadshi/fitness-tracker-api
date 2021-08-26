@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.tcs.spring.fitnesstrackerapi.entity.Appointment;
@@ -23,6 +24,7 @@ public class AppointmentService implements IAppointmentService {
 	IAppointmentRepository appointmentRepository;
 
 	@Override
+	@Transactional(rollbackFor = Exception.class) //RollBack for all type of Exception
 	public void save(Appointment appointment) {
 		appointmentRepository.save(appointment);
 	}
@@ -42,11 +44,13 @@ public class AppointmentService implements IAppointmentService {
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void deleteAppointment(long id) {
 		appointmentRepository.deleteById(id);
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void updateAppointment(long id, Appointment appointment) {
 		Optional<Appointment> appointmentFromDB = appointmentRepository.findById(id);
 		if (!appointmentFromDB.isPresent())
