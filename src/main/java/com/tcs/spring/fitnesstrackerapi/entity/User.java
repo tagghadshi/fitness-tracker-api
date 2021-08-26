@@ -1,15 +1,19 @@
 package com.tcs.spring.fitnesstrackerapi.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -36,5 +40,9 @@ public class User {
 	@NotBlank
 	@NotNull
 	private String phoneNo;
+	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("user")
+	private Appointment appointment;
 
 }

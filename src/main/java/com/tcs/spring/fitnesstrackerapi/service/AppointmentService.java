@@ -1,7 +1,6 @@
 package com.tcs.spring.fitnesstrackerapi.service;
 
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,12 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.tcs.spring.fitnesstrackerapi.entity.Appointment;
-import com.tcs.spring.fitnesstrackerapi.exceptions.AddressValidatiomException;
-import com.tcs.spring.fitnesstrackerapi.exceptions.AgeException;
 import com.tcs.spring.fitnesstrackerapi.exceptions.AppointmentNotFoundException;
-import com.tcs.spring.fitnesstrackerapi.exceptions.EmailVadilationException;
-import com.tcs.spring.fitnesstrackerapi.exceptions.NameException;
-import com.tcs.spring.fitnesstrackerapi.exceptions.PhoneNoValidationException;
 import com.tcs.spring.fitnesstrackerapi.repository.IAppointmentRepository;
 
 @Service
@@ -56,8 +50,8 @@ public class AppointmentService implements IAppointmentService {
 		if (!appointmentFromDB.isPresent())
 			throw new AppointmentNotFoundException("Appointment does not exist to update");
 		Appointment app1 = appointmentFromDB.get();
-//		if (appointment.getUser() != null)
-//			app1.setUser(appointment.getUser());
+		if (appointment.getUser() != null)
+			app1.setUser(appointment.getUser());
 		if (appointment.getAddress() != null)
 			app1.setAddress(appointment.getAddress());
 		if (StringUtils.hasText(appointment.getTrainerPreference()))
