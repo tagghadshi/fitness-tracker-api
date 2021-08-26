@@ -2,6 +2,8 @@ package com.tcs.spring.fitnesstrackerapi.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,7 @@ public class AppointmentController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Appointment> saveAppointment(@RequestBody Appointment appointment) {
+	public ResponseEntity<Appointment> saveAppointment(@RequestBody @Valid Appointment appointment) {
 		appointmentService.save(appointment);
 		logger.debug("Saved in Database");
 		return new ResponseEntity<>(HttpStatus.CREATED);

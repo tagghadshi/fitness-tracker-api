@@ -7,15 +7,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Setter
+@Getter
 public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	@NotBlank
+	@NotNull
 	private String name;
+	@NotNull
 	private byte age;
+	@NotNull
+	@Email
 	private String email;
+	@NotBlank
+	@NotNull
 	private String phoneNo;
 
 	@OneToOne(cascade = CascadeType.ALL)
@@ -27,91 +42,4 @@ public class Appointment {
 	private byte weeks;
 	private double ammount;
 	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public byte getAge() {
-		return age;
-	}
-
-	public void setAge(byte age) {
-		this.age = age;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPhoneNo() {
-		return phoneNo;
-	}
-
-	public void setPhoneNo(String phoneNo) {
-		this.phoneNo = phoneNo;
-	}
-
-	public String getTrainerPreference() {
-		return trainerPreference;
-	}
-
-	public void setTrainerPreference(String trainerPreference) {
-		this.trainerPreference = trainerPreference;
-	}
-
-	public boolean getNeedOfPhysiotherapist() {
-		return needOfPhysiotherapist;
-	}
-
-	public void setNeedOfPhysiotherapist(boolean needOfPhysiotherapist) {
-		this.needOfPhysiotherapist = needOfPhysiotherapist;
-	}
-
-	public String getPack() {
-		return pack;
-	}
-
-	public void setPack(String pack) {
-		this.pack = pack;
-	}
-
-	public byte getWeeks() {
-		return weeks;
-	}
-
-	public void setWeeks(byte weeks) {
-		this.weeks = weeks;
-	}
-
-	public double getAmmount() {
-		return ammount;
-	}
-
-	public void setAmmount(double ammount) {
-		this.ammount = ammount;
-	}
 }
