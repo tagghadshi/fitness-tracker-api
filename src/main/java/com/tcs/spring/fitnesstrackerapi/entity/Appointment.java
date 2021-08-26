@@ -8,8 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,13 +24,17 @@ public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@NotBlank
-	@NotNull
+	@NotNull(message = "Name is compulsory")
+    @NotBlank(message = "Name is compulsory")
+    @Pattern(regexp = "[a-z-A-Z]*", message = "Name has invalid characters")
 	private String name;
 	@NotNull
+	@Min(value = 18, message = "Age must be greater than or equal to 18")
+    @Max(value = 150, message = "Age must be less than or equal to 150")
 	private byte age;
-	@NotNull
-	@Email
+	@NotNull(message="Email Address is compulsory")
+    @NotBlank(message="Email Address is compulsory")
+    @Email(message = "Email Address is not a valid format")
 	private String email;
 	@NotBlank
 	@NotNull

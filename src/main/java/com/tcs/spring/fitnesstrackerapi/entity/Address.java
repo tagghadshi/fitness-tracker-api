@@ -17,20 +17,20 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@NotNull
-	@NotBlank
+	@NotNull(message="Address is compulsory")
+	@NotBlank(message="Address is compulsory")
 	private String addressLine1;
 	private String addressLine2;
-	@NotNull
-	@NotBlank
+	@NotNull(message="City is compulsory")
+	@NotBlank(message="City is compulsory")
 	private String city;
-	@NotNull
+	@NotNull(message="Pincode is compulsory")
 	private int pincode;
-	@NotNull
-	@NotBlank
+	@NotNull(message="State is compulsory")
+	@NotBlank(message="State is compulsory")
 	private String state;
-	@NotNull
-	@NotBlank
+	@NotNull(message="Country is compulsory")
+	@NotBlank(message="Country is compulsory")
 	private String country;
 
 }
