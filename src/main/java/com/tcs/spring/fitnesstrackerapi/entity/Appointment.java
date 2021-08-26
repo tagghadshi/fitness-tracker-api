@@ -24,22 +24,9 @@ public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@NotNull(message = "Name is compulsory")
-    @NotBlank(message = "Name is compulsory")
-    @Pattern(regexp = "[a-z-A-Z]*", message = "Name has invalid characters")
-	private String name;
-	@NotNull
-	@Min(value = 18, message = "Age must be greater than or equal to 18")
-    @Max(value = 150, message = "Age must be less than or equal to 150")
-	private byte age;
-	@NotNull(message="Email Address is compulsory")
-    @NotBlank(message="Email Address is compulsory")
-    @Email(message = "Email Address is not a valid format")
-	private String email;
-	@NotBlank
-	@NotNull
-	private String phoneNo;
-
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "USER_ID")
+	private User user;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ADDRESS_ID")
 	private Address address;
